@@ -5,3 +5,5 @@
 * 3.5 obraz ubuntu:24.04 z Javą w wersji 8 oraz Kotlinem - [Link do commita2](https://github.com/benio174/E-biznes/commit/498926d58d0a56047125cb5d6b3bb7743bf5c64c), [Link do obrazu na hub.docker.com](https://hub.docker.com/repository/docker/benio174/zadanie1/tags/3.5/sha256-a2435b47ddc21c28a5a870da145cce96577995d2a8ee5973fb22e04cc9076757)
 
 * 4.0 do powyższego należy dodać najnowszego Gradle’a oraz paczkę JDBC SQLite w ramach projektu na Gradle (build.gradle) - [Link do commita3](https://github.com/benio174/E-biznes/commit/da5bf36223cf91466cf11b5df58f2c5bbfa57070), [Link do obrazu na hub.docker.com](https://hub.docker.com/repository/docker/benio174/zadanie1/tags/4.0/sha256-3db2797e1d015970fc955d2525903740139c96142c3da964d25e2b8511249e91)
+
+* 4.5 stworzyć przykład typu HelloWorld oraz uruchomienie aplikacji przez CMD oraz gradle - [Link do commita4](https://github.com/benio174/E-biznes/commit/5794f01aecbdb3292e0a8da5b25e536b0ebb37eb), [Link do obrazu na hub.docker.com](https://hub.docker.com/repository/docker/benio174/zadanie1/tags/4.5/sha256-d69feca92262293fc6f8c6e701d5d4a8055a7b55fd927c029b353e3819193242)
