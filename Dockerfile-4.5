@@ -1,0 +1,19 @@
+FROM ubuntu:24.04
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get install -y wget unzip curl openjdk-8-jdk
+ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+
+RUN wget -q https://github.com/JetBrains/kotlin/releases/download/v1.9.23/kotlin-compiler-1.9.23.zip \
+    && unzip -q kotlin-compiler-1.9.23.zip -d /opt && rm kotlin-compiler-1.9.23.zip
+ENV PATH="$PATH:/opt/kotlinc/bin"
+
+RUN wget -q https://services.gradle.org/distributions/gradle-8.7-bin.zip \
+    && unzip -q gradle-8.7-bin.zip -d /opt && rm gradle-8.7-bin.zip
+ENV PATH="$PATH:/opt/gradle-8.7/bin"
+
+WORKDIR /app
+COPY . /app
+RUN gradle build --no-daemon
+
+CMD ["gradle", "run", "--no-daemon", "-q"]
