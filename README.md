@@ -9,3 +9,5 @@
 * 4.5 stworzyć przykład typu HelloWorld oraz uruchomienie aplikacji przez CMD oraz gradle - [Link do commita4](https://github.com/benio174/E-biznes/commit/5794f01aecbdb3292e0a8da5b25e536b0ebb37eb), [Link do obrazu na hub.docker.com](https://hub.docker.com/repository/docker/benio174/zadanie1/tags/4.5/sha256-d69feca92262293fc6f8c6e701d5d4a8055a7b55fd927c029b353e3819193242)
 
 * 5.0 dodać konfigurację docker-compose [Link do commita5](https://github.com/benio174/E-biznes/commit/3e854bb4b8f6b54724ec1d2d91699f23430ff252)
+
+[Link do filmiku](https://drive.google.com/file/d/1Cz2pMxcuxBPiXH0T2eURysqvDhcSwMpJ/view?usp=sharing)
