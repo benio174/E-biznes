@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  aplikacja-kotlinc:
+    build:
+      context: .
+      dockerfile: Dockerfile-4.5
+    container_name: kontener_ebiznes_final
+    image: benio174/zadanie1:5.0
