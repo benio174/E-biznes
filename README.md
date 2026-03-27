@@ -15,3 +15,6 @@
 # Zadanie2 - Scala
 
 * 3.0 Należy stworzyć kontroler do Produktów [Link do commita1](https://github.com/benio174/E-biznes/commit/115d0272f9711768e1b5627b416cd59ff046d249)
+
+* 3.5 Do kontrolera należy stworzyć endpointy zgodnie z CRUD - dane
+pobierane z listy [Link do commita2](https://github.com/benio174/E-biznes/commit/5b75dfd619d26f265c7f9fac4d08d24487630aa3)
