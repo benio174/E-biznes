@@ -11,3 +11,7 @@
 * 5.0 dodać konfigurację docker-compose [Link do commita5](https://github.com/benio174/E-biznes/commit/3e854bb4b8f6b54724ec1d2d91699f23430ff252)
 
 [Link do filmiku](https://drive.google.com/file/d/1Cz2pMxcuxBPiXH0T2eURysqvDhcSwMpJ/view?usp=sharing)
+
+# Zadanie2 - Scala
+
+* 3.0 Należy stworzyć kontroler do Produktów [Link do commita1](https://github.com/benio174/E-biznes/commit/115d0272f9711768e1b5627b416cd59ff046d249)
