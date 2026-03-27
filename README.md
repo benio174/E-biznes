@@ -18,3 +18,6 @@
 
 * 3.5 Do kontrolera należy stworzyć endpointy zgodnie z CRUD - dane
 pobierane z listy [Link do commita2](https://github.com/benio174/E-biznes/commit/5b75dfd619d26f265c7f9fac4d08d24487630aa3)
+
+* 4.0 Należy stworzyć kontrolery do Kategorii oraz Koszyka + endpointy
+zgodnie z CRUD [Link do commita3](https://github.com/benio174/E-biznes/commit/3f37d3c7060680d06e9590407b693c88e4e8d421)
