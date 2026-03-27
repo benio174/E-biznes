@@ -1,6 +1,44 @@
 import scala.collection.mutable.ListBuffer
 
 case class Product(id: Int, name: String, price: Double)
+case class Category(id: Int, name: String)
+case class CartItem(id: Int, productId: Int, quantity: Int)
+
+class CategoryController {
+  private val categories = ListBuffer(
+    Category(1, "Electronics"),
+    Category(2, "Groceries")
+  )
+  def getAll: List[Category] = categories.toList
+  def getById(id: Int): Option[Category] = categories.find(_.id == id)
+  def create(c: Category): Unit = categories += c
+  def delete(id: Int): Unit = categories.filterInPlace(_.id != id)
+  def updateName(id: Int, newName: String): Boolean = {
+    val index = categories.indexWhere(_.id == id)
+    if (index != -1) {
+      val old = categories(index)
+      categories.update(index, old.copy(name = newName))
+      true
+    } else false
+  }
+}
+
+class CartController {
+  private val cartItems = ListBuffer[CartItem]()
+
+  def getCart: List[CartItem] = cartItems.toList
+  def addToCart(item: CartItem): Unit = cartItems += item
+  def removeFromCart(id: Int): Unit = cartItems.filterInPlace(_.id != id)
+  def getById(id: Int): Option[CartItem] = cartItems.find(_.id == id)
+  def updateQuantity(id: Int, newQty: Int): Boolean = {
+    val index = cartItems.indexWhere(_.id == id)
+    if (index != -1) {
+      val old = cartItems(index)
+      cartItems.update(index, old.copy(quantity = newQty))
+      true
+    } else false
+  }
+}
 
 class ProductController {
   private val products: ListBuffer[Product] = ListBuffer(
@@ -31,6 +69,8 @@ class ProductController {
 
 @main def start(): Unit = {
   val controler = new ProductController()
+  val catCtrl  = new CategoryController()
+  val cartCtrl = new CartController()
   println("--- READ ---")
   controler.getAll.foreach(p => println(f"ID: ${p.id} | ${p.name}%-10s | ${p.price}%.2f"))
 
@@ -45,4 +85,24 @@ class ProductController {
 
   println("\n--- FINAL ---")
   controler.getAll.foreach(p => println(f"ID: ${p.id} | ${p.name}%-10s | ${p.price}%.2f"))
+
+  println("\n=== CATEGORIES ===")
+  catCtrl.create(Category(3, "Books"))
+  println(s"All categories: ${catCtrl.getAll.map(_.name).mkString(", ")}")
+  println(s"Category with ID 3: ${catCtrl.getById(3).map(_.name).getOrElse("Brak")}")
+  catCtrl.updateName(1, "Drinks")
+  println(s"Changed category 1: ${catCtrl.getById(1).get.name}")
+  catCtrl.delete(2)
+  println(s"Categories after deleted ID 2: ${catCtrl.getAll.map(_.name).mkString(", ")}")
+
+
+  println("\n=== CART ===")
+  cartCtrl.addToCart(CartItem(1, productId = 4, quantity = 2))
+  cartCtrl.addToCart(CartItem(2, productId = 3, quantity = 10))
+  println(s"Number of items in cart: ${cartCtrl.getCart.size}")
+  println(s"Cart item ID 1: ProductID=${cartCtrl.getById(1).get.productId}")
+  cartCtrl.updateQuantity(1, 5)
+  println(s"New quantity for item 1: ${cartCtrl.getById(1).get.quantity}")
+  cartCtrl.removeFromCart(2)
+  println(s"Cart items after removal: ${cartCtrl.getCart.map(_.id).mkString(", ")}")
 }
