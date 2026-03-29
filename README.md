@@ -26,3 +26,5 @@ zgodnie z CRUD [Link do commita3](https://github.com/benio174/E-biznes/commit/3f
 skrypt uruchamiający aplikację via ngrok [Link do commita4](https://github.com/benio174/E-biznes/commit/fa8c3f1aaa8f7ef848f88ce4a31307be2c5489c1)
 
 * 5.0 Należy dodać konfigurację CORS dla dwóch hostów dla metod CRUD [Link do commita5](https://github.com/benio174/E-biznes/commit/9b9814ed67b70620365c0aa5977503fb3ab48d2b)
+
+[Link do filmiku](https://drive.google.com/file/d/1pEVRIimrF45t60csLW8pMwMP_YAZuCat/view?usp=sharing)
