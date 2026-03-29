@@ -1,4 +1,7 @@
 import scala.collection.mutable.ListBuffer
+import akka.actor.typed.ActorSystem
+import akka.actor.typed.scaladsl.Behaviors
+import scala.concurrent.ExecutionContext
 
 case class Product(id: Int, name: String, price: Double)
 case class Category(id: Int, name: String)
@@ -67,42 +70,13 @@ class ProductController {
   }
 }
 
-@main def start(): Unit = {
-  val controler = new ProductController()
-  val catCtrl  = new CategoryController()
+object Main extends App {
+  implicit val system: ActorSystem[Nothing] = ActorSystem(Behaviors.empty, "EcommerceSystem")
+  implicit val executionContext: ExecutionContext = system.executionContext
+
+  val productCtrl = new ProductController()
+  val categoryCtrl = new CategoryController()
   val cartCtrl = new CartController()
-  println("--- READ ---")
-  controler.getAll.foreach(p => println(f"ID: ${p.id} | ${p.name}%-10s | ${p.price}%.2f"))
-
-  println("\n--- CREATE ---")
-  controler.create(Product(4, "Cheese", 12.00))
-
-  println("\n--- UPDATE ---")
-  if(controler.updatePrice(2, 4.99)) println("Price updated.")
-
-  println("\n--- DELETE ---")
-  if(controler.delete(1)) println("Product deleted.")
-
-  println("\n--- FINAL ---")
-  controler.getAll.foreach(p => println(f"ID: ${p.id} | ${p.name}%-10s | ${p.price}%.2f"))
-
-  println("\n=== CATEGORIES ===")
-  catCtrl.create(Category(3, "Books"))
-  println(s"All categories: ${catCtrl.getAll.map(_.name).mkString(", ")}")
-  println(s"Category with ID 3: ${catCtrl.getById(3).map(_.name).getOrElse("Brak")}")
-  catCtrl.updateName(1, "Drinks")
-  println(s"Changed category 1: ${catCtrl.getById(1).get.name}")
-  catCtrl.delete(2)
-  println(s"Categories after deleted ID 2: ${catCtrl.getAll.map(_.name).mkString(", ")}")
-
-
-  println("\n=== CART ===")
-  cartCtrl.addToCart(CartItem(1, productId = 4, quantity = 2))
-  cartCtrl.addToCart(CartItem(2, productId = 3, quantity = 10))
-  println(s"Number of items in cart: ${cartCtrl.getCart.size}")
-  println(s"Cart item ID 1: ProductID=${cartCtrl.getById(1).get.productId}")
-  cartCtrl.updateQuantity(1, 5)
-  println(s"New quantity for item 1: ${cartCtrl.getById(1).get.quantity}")
-  cartCtrl.removeFromCart(2)
-  println(s"Cart items after removal: ${cartCtrl.getCart.map(_.id).mkString(", ")}")
+  val server = new Server(productCtrl, categoryCtrl, cartCtrl)
+  server.start()
 }
