@@ -21,3 +21,6 @@ pobierane z listy [Link do commita2](https://github.com/benio174/E-biznes/commit
 
 * 4.0 Należy stworzyć kontrolery do Kategorii oraz Koszyka + endpointy
 zgodnie z CRUD [Link do commita3](https://github.com/benio174/E-biznes/commit/3f37d3c7060680d06e9590407b693c88e4e8d421)
+
+* 4.5 Należy aplikację uruchomić na dockerze (stworzyć obraz) oraz dodać
+skrypt uruchamiający aplikację via ngrok [Link do commita4](https://github.com/benio174/E-biznes/commit/fa8c3f1aaa8f7ef848f88ce4a31307be2c5489c1)
