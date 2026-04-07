@@ -28,3 +28,7 @@ skrypt uruchamiający aplikację via ngrok [Link do commita4](https://github.com
 * 5.0 Należy dodać konfigurację CORS dla dwóch hostów dla metod CRUD [Link do commita5](https://github.com/benio174/E-biznes/commit/9b9814ed67b70620365c0aa5977503fb3ab48d2b)
 
 [Link do filmiku](https://drive.google.com/file/d/1pEVRIimrF45t60csLW8pMwMP_YAZuCat/view?usp=sharing)
+
+# Zadanie3 - Kotlin
+
+* 3.0 Należy stworzyć aplikację kliencką w Kotlinie we frameworku Ktor, która pozwala na przesyłanie wiadomości na platformę Discord [Link do commita1](https://github.com/benio174/E-biznes/commit/0c626064bf41ec2cec99ec86cbab163e7949bfdb)
