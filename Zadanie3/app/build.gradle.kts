@@ -23,7 +23,7 @@ dependencies {
 }
 
 application {
-    mainClass.set("Zadanie3.AppKt")
+    mainClass.set("org.example.AppKt")
 }
 
 tasks.withType<JavaExec> {
