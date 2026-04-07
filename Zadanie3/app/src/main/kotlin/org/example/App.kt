@@ -16,20 +16,20 @@ fun main() = runBlocking {
     
     val client = HttpClient(CIO) {
         install(WebSockets)
-        install(ContentNegotiation) {
-            json()
-        }
+        install(ContentNegotiation) { json() }
     }
 
+    val bazaProduktow = mapOf(
+        "Elektronika" to listOf("Laptop", "Smartfon", "Słuchawki"),
+        "Moda" to listOf("Koszulka", "Spodnie", "Buty"),
+        "Sport" to listOf("Piłka", "Rakieta", "Mata do jogi")
+    )
+
     suspend fun sendMessage(channelId: String, text: String) {
-        try {
-            client.post("https://discord.com/api/v10/channels/$channelId/messages") {
-                header(HttpHeaders.Authorization, "Bot $token")
-                contentType(ContentType.Application.Json)
-                setBody(buildJsonObject { put("content", text) })
-            }
-        } catch (e: Exception) {
-            println("Błąd wysyłania: ${e.message}")
+        client.post("https://discord.com/api/v10/channels/$channelId/messages") {
+            header(HttpHeaders.Authorization, "Bot $token")
+            contentType(ContentType.Application.Json)
+            setBody(buildJsonObject { put("content", text) })
         }
     }
 
@@ -47,21 +47,23 @@ fun main() = runBlocking {
                     val data = json["d"]?.jsonObject
                     val content = data?.get("content")?.jsonPrimitive?.content ?: ""
                     val channelId = data?.get("channel_id")?.jsonPrimitive?.content ?: ""
-                    val author = data?.get("author")?.jsonObject?.get("username")?.jsonPrimitive?.content
-
-                    println("Odebrano od $author: $content")
 
                     if (content == "!kategorie") {
-                        val listaKategorii = """
-                            **Dostępne kategorie:**
-                            1. Elektronika
-                            2. Moda
-                            3. Dom i Ogród
-                            4. Sport
-                        """.trimIndent()
+                        val msg = "**Kategorie:** " + bazaProduktow.keys.joinToString(", ")
+                        sendMessage(channelId, msg)
+                    }
+
+                    if (content.startsWith("!produkty")) {
+                        val kategoria = content.removePrefix("!produkty").trim()
+                        val produkty = bazaProduktow[kategoria]
+
+                        val odpowiedz = if (produkty != null) {
+                            "**Produkty w kategorii $kategoria:**\n" + produkty.joinToString("\n") { "- $it" }
+                        } else {
+                            "Nie znaleziono kategorii '$kategoria'. Spróbuj: !produkty Elektronika"
+                        }
                         
-                        sendMessage(channelId, listaKategorii)
-                        println("Wysłano listę kategorii na kanał $channelId")
+                        sendMessage(channelId, odpowiedz)
                     }
                 }
             }
