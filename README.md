@@ -35,3 +35,5 @@ skrypt uruchamiający aplikację via ngrok [Link do commita4](https://github.com
 
 * 3.5 Aplikacja jest w stanie odbierać wiadomości użytkowników z
 platformy Discord skierowane do aplikacji (bota) [Link do commita2](https://github.com/benio174/E-biznes/commit/3cd59752637fe388fc006b07f389fdfa06147e52)
+
+* 4.0 Zwróci listę kategorii na określone żądanie użytkownika [Link do commita3](https://github.com/benio174/E-biznes/commit/800573446290da3be7b8b24ca74555d572b6b905)
