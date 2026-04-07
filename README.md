@@ -31,4 +31,4 @@ skrypt uruchamiający aplikację via ngrok [Link do commita4](https://github.com
 
 # Zadanie3 - Kotlin
 
-* 3.0 Należy stworzyć aplikację kliencką w Kotlinie we frameworku Ktor, która pozwala na przesyłanie wiadomości na platformę Discord [Link do commita1](https://github.com/benio174/E-biznes/commit/0c626064bf41ec2cec99ec86cbab163e7949bfdb)
+* 3.0 Należy stworzyć aplikację kliencką w Kotlinie we frameworku Ktor, która pozwala na przesyłanie wiadomości na platformę Discord [Link do commita1](https://github.com/benio174/E-biznes/commit/31d5a7a13810e05eded5aeb3e6373796c83677ef)
