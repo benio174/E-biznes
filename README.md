@@ -41,3 +41,8 @@ platformy Discord skierowane do aplikacji (bota) [Link do commita2](https://gith
 * 4.5 Zwróci listę produktów wg żądanej kategorii [Link do commita4](https://github.com/benio174/E-biznes/commit/4d3b60f9a557ca30a669db62f16315cdf260cad9)
 
 [Link do filmiku](https://drive.google.com/file/d/1Bsr1pJKCCIrIymudJV7LEMnXpWBFfMcK/view?usp=sharing)
+
+#Zadanie4 - Go
+
+* 3.0 Należy stworzyć aplikację we frameworki echo w j. Go, która będzie
+miała kontroler Produktów zgodny z CRUD [Link do commita1](https://github.com/benio174/E-biznes/commit/91b79327a03e744a34bc9411872900840b967c2d)
