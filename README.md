@@ -46,3 +46,5 @@ platformy Discord skierowane do aplikacji (bota) [Link do commita2](https://gith
 
 * 3.0 Należy stworzyć aplikację we frameworki echo w j. Go, która będzie
 miała kontroler Produktów zgodny z CRUD [Link do commita1](https://github.com/benio174/E-biznes/commit/91b79327a03e744a34bc9411872900840b967c2d)
+
+[Link do filmiku](https://drive.google.com/file/d/1Bfup9BYxb6IrsXJNGbhsRBY9azwgy9FA/view?usp=sharing)
