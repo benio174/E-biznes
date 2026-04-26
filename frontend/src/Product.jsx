@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 export const Product = () => {
     const [products, setProducts] = useState([]);
@@ -22,6 +23,7 @@ export const Product = () => {
     return (
         <section style={{ border: '1px solid #ccc', padding: '20px', marginBottom: '20px' }}>
             <h2>Lista Produktów (Pobieranie danych)</h2>
+            <Link to="/cart">Zobacz koszyk</Link>
             <div style={{ display: 'flex', gap: '15px' }}>
                 {products.length > 0 ? (
                     products.map(product => (
