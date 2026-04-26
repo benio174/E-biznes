@@ -60,3 +60,5 @@ serwerowej [Link do commita1](https://github.com/benio174/E-biznes/commit/a4a8b2
 
 * 4.0 Dane pomiędzy wszystkimi komponentami powinny być przesyłane za
 pomocą React hooks [Link do commita3](https://github.com/benio174/E-biznes/commit/1accedf1775ce0b60d3f46b7f299c605f74dd739)
+
+[Link do filmiku](https://drive.google.com/file/d/1VpcUkPjulrvd4vwnujqrSwWGDpOaaCnu/view?usp=sharing)
