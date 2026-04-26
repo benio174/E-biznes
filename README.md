@@ -56,4 +56,4 @@ Płatności; Płatności powinny wysyłać do aplikacji serwerowej dane, a w
 Produktach powinniśmy pobierać dane o produktach z aplikacji
 serwerowej [Link do commita1](https://github.com/benio174/E-biznes/commit/a4a8b232ee176c007821b2196af485046e2245c5)
 
-* Należy dodać Koszyk wraz z widokiem; należy wykorzystać routing [Link do commita2](https://github.com/benio174/E-biznes/commit/621666c89ab3810699b5e6d8ed43e74552a4604d)
+* 3.5 Należy dodać Koszyk wraz z widokiem; należy wykorzystać routing [Link do commita2](https://github.com/benio174/E-biznes/commit/621666c89ab3810699b5e6d8ed43e74552a4604d)
