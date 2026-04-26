@@ -1,23 +1,23 @@
-import React from 'react';
+import { useCart } from './CartContext';
 import { Link } from 'react-router-dom';
 
 export const Cart = () => {
-    const tempItems = [
-        { id: 1, name: "Przykładowy produkt", price: 100 }
-    ];
+    const { cartItems } = useCart();
+
+    const total = cartItems.reduce((sum, item) => sum + item.price, 0);
 
     return (
-        <div style={{ padding: '10px', border: '1px solid orange' }}>
-            <h2>Koszyk (Widok)</h2>
-            {tempItems.map(item => (
-                <div key={item.id}>• {item.name} - {item.price} PLN</div>
-            ))}
-            <hr />
-            <Link to="/payment">
-                <button>Przejdź do Płatności</button>
-            </Link>
-            <br />
-            <Link to="/">Wróć do produktów</Link>
+        <div>
+            <h2>Twój Koszyk</h2>
+            {cartItems.length === 0 ? <p>Koszyk jest pusty</p> : (
+                <ul>
+                    {cartItems.map((item, index) => (
+                        <li key={index}>{item.name} - {item.price} PLN</li>
+                    ))}
+                </ul>
+            )}
+            <h3>Suma: {total} PLN</h3>
+            <Link to="/payment"><button disabled={cartItems.length === 0}>Do kasy</button></Link>
         </div>
     );
 };

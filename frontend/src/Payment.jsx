@@ -1,39 +1,33 @@
 import React, { useState } from 'react';
+import { useCart } from './CartContext';
 
 export const Payment = () => {
-    const [status, setStatus] = useState('');
+    const { cartItems, clearCart } = useCart();
+    const [msg, setMsg] = useState('');
+    const total = cartItems.reduce((sum, item) => sum + item.price, 0);
 
-    const handlePayment = async () => {
-        setStatus('Wysyłanie danych o płatności...');
-        
-        try {
-            const response = await fetch('http://localhost:8081/api/payment', {
-                method: 'POST',
-                headers: { 
-                    'Content-Type': 'application/json' 
-                },
-                body: JSON.stringify({ amount: 100, currency: 'PLN' }) 
-            });
-
-            if (response.ok) {
-                setStatus('Dane pomyślnie wysłane do serwera!');
-            } else {
-                setStatus('Błąd serwera podczas przetwarzania płatności.');
-            }
-        } catch (error) {
-            console.error("Błąd połączenia:", error);
-            setStatus('Brak połączenia z serwerem.');
-        }
+    const handlePayment = () => {
+        fetch('http://localhost:8081/api/payment', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ 
+                totalAmount: total, 
+                itemsCount: cartItems.length 
+            })
+        })
+        .then(() => {
+            setMsg('Zapłacono pomyślnie!');
+            clearCart();
+        });
     };
 
     return (
-        <section style={{ border: '1px solid #ccc', padding: '20px' }}>
-            <h2>Płatności (Wysyłanie danych)</h2>
-            <p>Kliknij poniższy przycisk, aby wysłać żądanie POST na serwer.</p>
-            <button onClick={handlePayment}>
-                Zasymuluj płatność (100 PLN)
-            </button>
-            {status && <p style={{ marginTop: '10px', fontWeight: 'bold' }}>{status}</p>}
-        </section>
+        <div>
+            <h2>Płatność</h2>
+            <p>Ilość przedmiotów: {cartItems.length}</p>
+            <p>Do zapłaty: <strong>{total} PLN</strong></p>
+            <button onClick={handlePayment} disabled={total === 0}>Zapłać teraz</button>
+            <p>{msg}</p>
+        </div>
     );
 };
