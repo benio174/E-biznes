@@ -70,3 +70,5 @@ pomocą React hooks [Link do commita3](https://github.com/benio174/E-biznes/comm
 
 * 3.5 Należy rozszerzyć testy funkcjonalne, aby zawierały minimum 50
 asercji [Link do commita](https://github.com/benio174/E-biznes/commit/b15c4dce21ab6b819a0237699716f0bf3af01257)
+
+[Link do filmiku](https://drive.google.com/file/d/1kXcTn8SIsO9GJekrsCVR7_c79F2Ef2WD/view?usp=sharing)
