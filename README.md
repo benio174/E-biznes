@@ -62,3 +62,11 @@ serwerowej [Link do commita1](https://github.com/benio174/E-biznes/commit/a4a8b2
 pomocą React hooks [Link do commita3](https://github.com/benio174/E-biznes/commit/1accedf1775ce0b60d3f46b7f299c605f74dd739)
 
 [Link do filmiku](https://drive.google.com/file/d/1VpcUkPjulrvd4vwnujqrSwWGDpOaaCnu/view?usp=sharing)
+
+# Zadanie6 - Testy
+
+* 3.0 Należy stworzyć 20 przypadków testowych w CypressJS lub Selenium
+(Kotlin, Python, Java, JS, Go, Scala) [Link do commita](https://github.com/benio174/E-biznes/commit/b15c4dce21ab6b819a0237699716f0bf3af01257)
+
+* 3.5 Należy rozszerzyć testy funkcjonalne, aby zawierały minimum 50
+asercji [Link do commita](https://github.com/benio174/E-biznes/commit/b15c4dce21ab6b819a0237699716f0bf3af01257)
