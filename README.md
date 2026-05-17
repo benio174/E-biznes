@@ -72,3 +72,32 @@ pomocą React hooks [Link do commita3](https://github.com/benio174/E-biznes/comm
 asercji [Link do commita](https://github.com/benio174/E-biznes/commit/b15c4dce21ab6b819a0237699716f0bf3af01257)
 
 [Link do filmiku](https://drive.google.com/file/d/1kXcTn8SIsO9GJekrsCVR7_c79F2Ef2WD/view?usp=sharing)
+
+# Zadanie7
+
+* 3.0 Należy dodać litera do odpowiedniego kodu aplikacji serwerowej w
+hookach gita [Link do commita](https://github.com/benio174/e-biznes-serwer-go/commit/f22a0334db29f407f7aa961716391b45c0406adb)
+
+* 3.5, 4.0, 4.5 Należy wyeliminować wszystkie bugi, zapaszki, wszystkie podatności oraz błędy bezpieczeństwa w kodzie w Sonarze (kod
+aplikacji serwerowej) [Link do commita](https://github.com/benio174/e-biznes-serwer-go/commit/2d62ee5ef0e8a3953ee751dfcb5d23824ce8995f)
+
+* 5.0 Należy wyeliminować wszystkie błędy oraz zapaszki w kodzie
+aplikacji klienckiej [Link do commita1](https://github.com/benio174/e-biznes-client-react/commit/0ea61009542ddaacb86bb5eae2f3ba4b208dc811), [Link do poprawki](https://github.com/benio174/e-biznes-client-react/commit/30b2f3e31ae537abfab2c431cc75295432397aef)
+
+
+Serwer:
+
+* [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=benio174_e-biznes-serwer-go&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=benio174_e-biznes-serwer-go)
+
+* [![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=benio174_e-biznes-serwer-go)](https://sonarcloud.io/summary/new_code?id=benio174_e-biznes-serwer-go)
+
+* [![SonarQube Cloud](https://sonarcloud.io/images/project_badges/sonarcloud-light.svg)](https://sonarcloud.io/summary/new_code?id=benio174_e-biznes-serwer-go)
+
+
+Klient:
+
+* [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=benio174_e-biznes-client-react&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=benio174_e-biznes-client-react)
+
+* [![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=benio174_e-biznes-client-react)](https://sonarcloud.io/summary/new_code?id=benio174_e-biznes-client-react)
+
+* [![SonarQube Cloud](https://sonarcloud.io/images/project_badges/sonarcloud-light.svg)](https://sonarcloud.io/summary/new_code?id=benio174_e-biznes-client-react)
