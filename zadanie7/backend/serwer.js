@@ -12,6 +12,9 @@ const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
 const GOOGLE_REDIRECT_URI = "http://localhost:5000/api/auth/google/callback";
 const JWT_SECRET = process.env.JWT_SECRET || "domyslny_klucz_awaryjny";
 
+const GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID;
+const GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
+
 const { OAuth2Client } = require('google-auth-library');
 const googleClient = new OAuth2Client(GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, GOOGLE_REDIRECT_URI);
 
@@ -111,7 +114,6 @@ app.get('/api/auth/google/callback', async (req, res) => {
   const { code } = req.query;
 
   try {
-    // 1. Wymieniamy kod od Google na tokeny dostępu
     const { tokens } = await googleClient.getToken(code);
     googleClient.setCredentials(tokens);
 
@@ -152,10 +154,85 @@ app.get('/api/auth/google/callback', async (req, res) => {
       maxAge: 3600000
     });
 
-    res.redirect('http://localhost:3000?status=success');
+    // POPRAWKA: Dodano parametr provider=google
+    res.redirect('http://localhost:3000?status=success&provider=google');
 
   } catch (error) {
     console.error("Błąd OAuth2:", error);
+    res.redirect('http://localhost:3000?status=error');
+  }
+});
+
+app.get('/api/auth/github', (req, res) => {
+  const url = `https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}&scope=user:email`;
+  res.redirect(url);
+});
+
+app.get('/api/auth/github/callback', async (req, res) => {
+  const { code } = req.query;
+
+  try {
+    const tokenResponse = await fetch('https://github.com/login/oauth/access_token', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        client_id: GITHUB_CLIENT_ID,
+        client_secret: GITHUB_CLIENT_SECRET,
+        code: code
+      })
+    });
+    
+    const tokenData = await tokenResponse.json();
+    const accessToken = tokenData.access_token;
+
+    const userResponse = await fetch('https://api.github.com/user', {
+      headers: { 'Authorization': `token ${accessToken}` }
+    });
+    const userData = await userResponse.json();
+
+    const emailsResponse = await fetch('https://api.github.com/user/emails', {
+      headers: { 'Authorization': `token ${accessToken}` }
+    });
+    const emailsData = await emailsResponse.json();
+    const primaryEmail = emailsData.find(e => e.primary)?.email || userData.email || `${userData.login}@github.com`;
+
+    const githubId = userData.id;
+
+    let user = usersDatabase.find(u => u.email === primaryEmail);
+
+    if (!user) {
+      user = {
+        id: usersDatabase.length + 1,
+        email: primaryEmail,
+        githubId: githubId,
+        passwordHash: null
+      };
+      usersDatabase.push(user);
+      console.log("Zarejestrowano nowego użytkownika przez GitHub OAuth2:", user);
+    } else {
+      user.githubId = githubId;
+      console.log("Zalogowano istniejącego użytkownika przez GitHub OAuth2:", user);
+    }
+
+    const ourToken = jwt.sign(
+      { userId: user.id, email: user.email },
+      JWT_SECRET,
+      { expiresIn: '1h' }
+    );
+
+    res.cookie('token', ourToken, {
+      httpOnly: true,
+      secure: false,
+      maxAge: 3600000
+    });
+
+    res.redirect('http://localhost:3000?status=success&provider=github');
+
+  } catch (error) {
+    console.error("Błąd GitHub OAuth2:", error);
     res.redirect('http://localhost:3000?status=error');
   }
 });
