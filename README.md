@@ -107,3 +107,5 @@ Klient:
 * 3.0 logowanie przez aplikację serwerową (bez Oauth2) [Link do commita](https://github.com/benio174/E-biznes/commit/00b63a2007829c06dc51cbf5dc09e892f4950f8a)
 
 * 3.5 rejestracja przez aplikację serwerową (bez Oauth2) [Link do commita](https://github.com/benio174/E-biznes/commit/c72fa9b925fc3ff0678841a2b6e6a9c437069720)
+
+* 4.0 logowanie via Google OAuth2 [Link do commita](https://github.com/benio174/E-biznes/commit/c27a74375008fbb840b824cb48a0b48f008c8d00)
