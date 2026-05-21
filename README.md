@@ -109,3 +109,7 @@ Klient:
 * 3.5 rejestracja przez aplikację serwerową (bez Oauth2) [Link do commita](https://github.com/benio174/E-biznes/commit/c72fa9b925fc3ff0678841a2b6e6a9c437069720)
 
 * 4.0 logowanie via Google OAuth2 [Link do commita](https://github.com/benio174/E-biznes/commit/c27a74375008fbb840b824cb48a0b48f008c8d00)
+
+* 4.5, 5.0 logowanie via Facebook lub Github OAuth2 i zapisywanie danych logowania OAuth2 po stronie serwera [Link do commita](https://github.com/benio174/E-biznes/commit/52e53fa37f09518c797bd9103c45eee25274cc6e)
+
+[Link do filmiku](https://drive.google.com/file/d/1ZF52NIgExqsmYwufASzJbLDmg2VmFmvV/view?usp=sharing)
