@@ -101,3 +101,7 @@ Klient:
 * [![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=benio174_e-biznes-client-react)](https://sonarcloud.io/summary/new_code?id=benio174_e-biznes-client-react)
 
 * [![SonarQube Cloud](https://sonarcloud.io/images/project_badges/sonarcloud-light.svg)](https://sonarcloud.io/summary/new_code?id=benio174_e-biznes-client-react)
+
+#Zadanie 8
+
+* 3.0 logowanie przez aplikację serwerową (bez Oauth2) [Link do commita](https://github.com/benio174/E-biznes/commit/00b63a2007829c06dc51cbf5dc09e892f4950f8a)
