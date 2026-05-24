@@ -120,3 +120,11 @@ Klient:
 
 * 3.5 należy połączyć serwis z interfejsem frontendowym via serwis w
 Kotlinie (zadanie 3) - discord + JS [Link do commita](https://github.com/benio174/E-biznes/commit/342cc972151968f2ec7ef0ce472301b8caead217)
+
+* 4.0 stworzyć listę 5 różnych otwarć oraz zamknięć rozmowy [Link do commita](https://github.com/benio174/E-biznes/commit/50ecdccf95b052087d618c573eba9e6a456c4d7f)
+
+* 4.5 filtrowanie po zagadnieniach związanych ze sklepem (np. ograniczenie się jedynie do ubrań oraz samego sklepu) do GPT [Link do commita](https://github.com/benio174/E-biznes/commit/ef612c972e9760cfcd0ff656918fe505f0c02b0c)
+
+* 5.0 filtrowanie odpowiedzi po sentymencie [Link do commita](https://github.com/benio174/E-biznes/commit/ed142209f951d0577da9a937d3e99fac38ac7a51)
+
+[Link do filmiku](https://drive.google.com/file/d/1XUKJTpt3cbVTf69QR0iFlJMiybG5gWUk/view?usp=sharing)
