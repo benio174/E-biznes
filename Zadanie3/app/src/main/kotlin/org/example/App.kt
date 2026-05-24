@@ -20,7 +20,6 @@ fun main() = runBlocking {
         install(ContentNegotiation) { json() }
     }
 
-    // Funkcja przesyłająca tekst do Pythona
     suspend fun askPythonAI(userMessage: String): String {
         return try {
             val response = httpClient.post("http://host.docker.internal:8000/analyze") {
@@ -45,8 +44,6 @@ fun main() = runBlocking {
             println("Błąd wysyłania na Discord: ${e.message}")
         }
     }
-
-    println("Punkt 3.5: Bot w Kotlinie nasłuchuje na Discordzie...")
 
     httpClient.wss("wss://gateway.discord.gg/?v=10&encoding=json") {
         for (frame in incoming) {
