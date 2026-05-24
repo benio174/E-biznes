@@ -5,7 +5,7 @@ import requests
 import random
 import time
 
-app = FastAPI(title="Serwis AI - Punkt 4.5 (Filtrowanie Tematów)")
+app = FastAPI(title="Kompletny Serwis AI - Wszystkie Punkty (3.5 - 5.0)")
 
 app.add_middleware(
     CORSMiddleware,
@@ -37,58 +37,50 @@ ZAMKNIECIA = [
 ]
 
 SKLEP_KEYWORDS = [
-
     "buty", "but", "koszulka", "t-shirt", "bluza", "spodnie", "sukienka", "spódnica", 
     "kurtka", "płaszcz", "odzież", "ciuchy", "ubrania", "kolekcja", "moda", "stylizacja",
-
     "sklep", "cena", "koszt", "kupić", "zakupy", "zamówienie", "rozmiar", "kolor", 
     "dostawa", "wysyłka", "płatność", "zwrot", "reklamacja", "rabat", "promocja", "kod"
 ]
 
+NEGATYWNY_SENTYMENT_KEYWORDS = [
+    "głupi", "zły", "brzydki", "okropny", "beznadziejny", "najgorszy", "nienawidzę", 
+    "odmawiam", "błąd", "fatalny", "oszustwo", "lipa", "tandeta", "syf"
+]
+
 @app.post("/analyze")
 def analyze_text(request: InteractionRequest):
-    start_time = time.time()
     user_text = request.text.strip().lower()
-    print(f"[PYTHON LOG] Analiza wiadomości: {user_text}")
+    print(f"[PYTHON LOG] Nowe żądanie: {user_text}")
     
     powitania_keywords = ["cześć", "czesc", "witaj", "dzień dobry", "dzien dobry", "hej", "hello", "siemanko", "!witaj"]
     if user_text in powitania_keywords:
-        return {
-            "reply": random.choice(OTWARCIA),
-            "status": "success",
-            "source": "template_greeting"
-        }
+        return {"reply": random.choice(OTWARCIA), "status": "success", "source": "greeting"}
         
     pozegnania_keywords = ["pa", "pa pa", "do widzenia", "żegnaj", "zegnaj", "koniec", "narazie", "nara", "pa!", "!zegnaj"]
     if user_text in pozegnania_keywords:
-        return {
-            "reply": random.choice(ZAMKNIECIA),
-            "status": "success",
-            "source": "template_farewell"
-        }
+        return {"reply": random.choice(ZAMKNIECIA), "status": "success", "source": "farewell"}
+
 
     is_topic_valid = any(keyword in user_text for keyword in SKLEP_KEYWORDS)
-    
     if not is_topic_valid:
-        print(f"[PYTHON LOG] Wykryto temat spoza zakresu sklepu!")
+        print("[PYTHON LOG] Blokada: Temat poza zakresem sklepu.")
         return {
-            "reply": "Przepraszam, ale jestem asystentem sklepu odzieżowego i mogę pomagać Ci tylko w tematach związanych z naszymi ubraniami i zakupami.",
+            "reply": "Przepraszam, ale jestem asystentem sklepu odzieżowego i odpowiadam tylko na pytania związane z zakupami i ubraniami.",
             "status": "blocked",
-            "source": "guardrail_filter"
+            "source": "guardrail_input"
         }
 
     system_prompt = (
-        "Jesteś pomocnym asystentem w sklepie odzieżowym. Odpowiadaj bardzo krótko (maksymalnie jedno zdanie), "
-        "wyłącznie po polsku i tylko na tematy związane z ubraniami lub zakupami. Pytanie klienta: "
+        "Jesteś uprzejmym doradcą w sklepie odzieżowym. Odpowiadaj bardzo krótko (do 10 słów), "
+        "wyłącznie po polsku. Pytanie klienta: "
     )
     
     payload = {
         "model": "llama3:latest",
         "prompt": f"{system_prompt} {request.text}",
         "stream": False,
-        "options": {
-            "num_predict": 25
-        }
+        "options": {"num_predict": 25}
     }
     
     try:
@@ -96,11 +88,26 @@ def analyze_text(request: InteractionRequest):
         response.raise_for_status()
         ai_response = response.json().get("response", "").strip()
         
+        print(f"[PYTHON LOG] Oryginalna odpowiedź AI: {ai_response}")
+        
+        ai_response_lower = ai_response.lower()
+        contains_negative_sentiment = any(neg_word in ai_response_lower for neg_word in NEGATYWNY_SENTYMENT_KEYWORDS)
+        
+        if contains_negative_sentiment:
+            print("[PYTHON LOG] Krytyczny alert: Wykryto negatywny sentyment w odpowiedzi AI! Filtruję...")
+            safe_reply = "Dokładamy wszelkich starań, aby nasze produkty spełniały najwyższe standardy. Czy mogę pomóc w znalezieniu alternatywnego modelu?"
+            return {
+                "reply": safe_reply,
+                "status": "filtered_sentiment",
+                "source": "guardrail_output"
+            }
+            
         return {
             "reply": ai_response,
             "status": "success",
             "source": "ollama_ai"
         }
+        
     except requests.exceptions.RequestException as e:
         raise HTTPException(status_code=500, detail=f"Blad Ollama: {str(e)}")
 
