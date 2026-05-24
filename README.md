@@ -113,3 +113,7 @@ Klient:
 * 4.5, 5.0 logowanie via Facebook lub Github OAuth2 i zapisywanie danych logowania OAuth2 po stronie serwera [Link do commita](https://github.com/benio174/E-biznes/commit/52e53fa37f09518c797bd9103c45eee25274cc6e)
 
 [Link do filmiku](https://drive.google.com/file/d/1ZF52NIgExqsmYwufASzJbLDmg2VmFmvV/view?usp=sharing)
+
+# Zadanie9
+
+* 3.0 należy stworzyć po stronie serwerowej osobny serwis do łącznia z chatGPT [Link do commita](https://github.com/benio174/E-biznes/commit/3a08fbe5fdd0fb5c909c645967a638a647ba7a16)
