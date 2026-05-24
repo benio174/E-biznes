@@ -117,3 +117,6 @@ Klient:
 # Zadanie9
 
 * 3.0 należy stworzyć po stronie serwerowej osobny serwis do łącznia z chatGPT [Link do commita](https://github.com/benio174/E-biznes/commit/3a08fbe5fdd0fb5c909c645967a638a647ba7a16)
+
+* 3.5 należy połączyć serwis z interfejsem frontendowym via serwis w
+Kotlinie (zadanie 3) - discord + JS [Link do commita](https://github.com/benio174/E-biznes/commit/342cc972151968f2ec7ef0ce472301b8caead217)
