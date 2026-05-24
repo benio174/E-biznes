@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Sklep E-biznes - Panel Frontendu</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f4f4f9; }
+        .container { max-width: 600px; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        input { width: 75%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; }
+        button { padding: 10px 15px; background: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        .box { margin-top: 20px; padding: 15px; background: #e9ecef; border-radius: 4px; min-height: 50px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Interfejs Frontendowy (JS)</h2>
+    <p>Rozmawiaj z AI bezpośrednio przez panel przeglądarki:</p>
+    
+    <input type="text" id="userInput" placeholder="Wpisz pytanie do bota...">
+    <button onclick="sendToPython()">Wyślij</button>
+
+    <h3>Odpowiedź bota:</h3>
+    <div class="box" id="output">Czekam na wiadomość...</div>
+</div>
+
+<script>
+    async function sendToPython() {
+        const input = document.getElementById('userInput');
+        const output = document.getElementById('output');
+        const text = input.value.trim();
+
+        if (!text) return;
+        output.innerText = "Łączenie z serwisem AI...";
+        input.value = "";
+
+        try {
+            // Strzał bezpośrednio do PYTHON (Port 8000)
+            const response = await fetch('http://localhost:8000/analyze', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ text: text })
+            });
+
+            const data = await response.json();
+            output.innerText = data.reply;
+
+        } catch (error) {
+            output.innerText = "Błąd komunikacji z Pythonem: " + error.message;
+        }
+    }
+</script>
+</body>
+</html>

@@ -22,6 +22,20 @@ dependencies {
     implementation(kotlin("stdlib"))
 }
 
+// dependencies {
+//     implementation("io.ktor:ktor-client-core:2.3.9")
+//     implementation("io.ktor:ktor-client-cio:2.3.9")
+//     implementation("io.ktor:ktor-client-websockets:2.3.9")
+//     implementation("io.ktor:ktor-client-content-negotiation:2.3.9")
+//     implementation("io.ktor:ktor-server-core:2.3.9")
+//     implementation("io.ktor:ktor-server-netty:2.3.9")
+//     implementation("io.ktor:ktor-server-cors:2.3.9")
+//     implementation("io.ktor:ktor-server-content-negotiation:2.3.9")
+//     implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.9")
+//     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
+//     implementation(kotlin("stdlib"))
+// }
+
 application {
     mainClass.set("org.example.AppKt")
 }
