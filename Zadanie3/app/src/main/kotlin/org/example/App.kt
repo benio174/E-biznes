@@ -21,8 +21,10 @@ fun main() = runBlocking {
     }
 
     suspend fun askPythonAI(userMessage: String): String {
+        val aiModuleUrl = System.getenv("AI_MODULE_URL") ?: "http://host.docker.internal:8000/analyze"
+        
         return try {
-            val response = httpClient.post("http://host.docker.internal:8000/analyze") {
+            val response = httpClient.post(aiModuleUrl) {
                 contentType(ContentType.Application.Json)
                 setBody(buildJsonObject { put("text", userMessage) })
             }
