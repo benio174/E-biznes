@@ -128,3 +128,13 @@ Kotlinie (zadanie 3) - discord + JS [Link do commita](https://github.com/benio17
 * 5.0 filtrowanie odpowiedzi po sentymencie [Link do commita](https://github.com/benio174/E-biznes/commit/ed142209f951d0577da9a937d3e99fac38ac7a51)
 
 [Link do filmiku](https://drive.google.com/file/d/1XUKJTpt3cbVTf69QR0iFlJMiybG5gWUk/view?usp=sharing)
+
+# Zadanie 10
+
+* 3.0 Należy stworzyć odpowiednie instancje po stronie chmury na dockerze
+
+* 3.5 Stworzyć odpowiedni pipeline w Github Actions do budowania aplikacji (np. via fatjar) [Link do commita](https://github.com/benio174/E-biznes/commit/552fd903bcc4aa842ebaa333ac1b713637974edc) [Poprawka](https://github.com/benio174/E-biznes/commit/d2465f9423a3c6c041eae8e9932f7910afb5187e)
+
+* 4.0 Dodać notyfikację mailową o wynikach z sonara [Link do commita](https://github.com/benio174/E-biznes/commit/7f6aa254255289862745e23bd3318b1fb0a8563f)
+
+[Link do filmiku](https://drive.google.com/file/d/1NmBhafM5guLmGEgJ5rFqkLwKM5cn6gkv/view?usp=sharing)
