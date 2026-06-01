@@ -23,6 +23,8 @@ jobs:
 
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
+      working-directory: ./Zadanie3
 
     - name: Build with Gradle
       run: ./gradlew installDist --no-daemon
+      working-directory: ./Zadanie3
